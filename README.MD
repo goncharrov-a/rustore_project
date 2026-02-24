@@ -265,7 +265,9 @@ allure serve allure-results
 
 ### Видео мобильного прогона
 
-![Mobile run](media/images/demo.gif)
+<p align="center">
+  <img src="./media/images/demo.gif" alt="Mobile run demo" width="320">
+</p>
 
 ---
 
