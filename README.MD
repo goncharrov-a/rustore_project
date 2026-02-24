@@ -265,7 +265,9 @@ allure serve allure-results
 
 ### Пример видео прохождения mobile-автотеста
 
-![demo.gif](media/images/demo.gif)
+<p align="center">
+  <img src="media/images/demo.gif" alt="demo.gif" width="420">
+</p>
 
 
 ---
