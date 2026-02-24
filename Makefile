@@ -11,8 +11,8 @@ black:
 	black .
 
 typecheck:
-	mypy .
+	mypy --config-file mypy.ini .
 
 qa:
 	ruff check .
-	mypy .
+	mypy --config-file mypy.ini .

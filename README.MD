@@ -191,6 +191,25 @@ pytest tests/mobile -m mobile --alluredir=allure-results
 allure serve allure-results
 ```
 
+### Jenkins запуск
+
+В репозитории добавлен `Jenkinsfile` для pipeline запуска с параметрами:
+
+- `TEST_SCOPE`: `ui` / `api` / `ui_api` / `all_no_mobile` / `mobile`
+- `UI_BASE_URL`, `UI_BROWSER`
+- `API_BASE_URL`, `API_TIMEOUT`
+- `SELENOID_URL`, `SELENOID_LOGIN`, `SELENOID_PASS`
+
+Для UI-видео в Allure:
+
+1. Укажи `SELENOID_URL` (host или full URL к `wd/hub`)
+2. При необходимости укажи `SELENOID_LOGIN` / `SELENOID_PASS`
+3. Убедись, что Selenoid video endpoint доступен (`/video/<session_id>.mp4`)
+
+Тогда в Allure будет:
+- `video_<session_id>.html` (встроенный плеер)
+- `video_url` (прямая ссылка на mp4)
+
 ---
 
 ## Параметры окружения

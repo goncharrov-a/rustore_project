@@ -1,5 +1,6 @@
 import json
 import os
+from urllib.parse import urlsplit, urlunsplit
 
 import allure
 import pytest
@@ -16,25 +17,101 @@ from selene import browser
 from selenium import webdriver
 
 
+def _build_remote_url() -> str:
+    explicit = os.getenv("SELENOID_URL", "").strip()
+    if explicit.startswith("http://") or explicit.startswith("https://"):
+        return explicit
+
+    login = os.getenv("SELENOID_LOGIN", "").strip()
+    password = os.getenv("SELENOID_PASS", "").strip()
+    host = explicit
+    if host and login and password:
+        return f"https://{login}:{password}@{host}/wd/hub"
+    if host:
+        return f"https://{host}/wd/hub"
+    return ""
+
+
+def _build_video_public_base(remote_url: str) -> str:
+    explicit = os.getenv("SELENOID_UI", "").strip()
+    if explicit:
+        return explicit.rstrip("/")
+
+    parsed = urlsplit(remote_url)
+    if not parsed.scheme or not parsed.hostname:
+        return ""
+
+    host = f"{parsed.scheme}://{parsed.hostname}"
+    if parsed.port:
+        host = f"{host}:{parsed.port}"
+    return host.rstrip("/")
+
+
+def _build_auth_video_url(public_url: str, remote_url: str) -> str:
+    remote = urlsplit(remote_url)
+    if not remote.username:
+        return public_url
+
+    auth = remote.username
+    if remote.password:
+        auth = f"{auth}:{remote.password}"
+
+    parts = urlsplit(public_url)
+    return urlunsplit(
+        (
+            parts.scheme,
+            f"{auth}@{parts.netloc}",
+            parts.path,
+            parts.query,
+            parts.fragment,
+        )
+    )
+
+
+def _attach_selenoid_video(session_id: str, remote_url: str) -> None:
+    base = _build_video_public_base(remote_url)
+    if not base:
+        return
+
+    public_video_url = f"{base}/video/{session_id}.mp4"
+    auth_video_url = _build_auth_video_url(public_video_url, remote_url)
+
+    html = (
+        "<html><body><video width='100%' height='100%' controls autoplay>"
+        f"<source src='{auth_video_url}' type='video/mp4'></video>"
+        "</body></html>"
+    )
+    allure.attach(
+        html,
+        name=f"video_{session_id}",
+        attachment_type=allure.attachment_type.HTML,
+    )
+    allure.attach(
+        public_video_url,
+        name="video_url",
+        attachment_type=allure.attachment_type.URI_LIST,
+    )
+
+
 @pytest.fixture(scope="function", autouse=True)
 def ui_browser_setup():
     base_url = os.getenv("UI_BASE_URL", "https://www.rustore.ru")
     browser_name = os.getenv("UI_BROWSER", "chrome")
     width = int(os.getenv("UI_BROWSER_WIDTH", "1920"))
     height = int(os.getenv("UI_BROWSER_HEIGHT", "1080"))
-    selenoid_url = os.getenv("SELENOID_URL")
+    remote_url = _build_remote_url()
 
     browser.config.base_url = base_url
     browser.config.window_width = width
     browser.config.window_height = height
     browser.config.timeout = float(os.getenv("UI_TIMEOUT", "10"))
 
-    if selenoid_url:
+    if remote_url:
         options = (
             webdriver.ChromeOptions() if browser_name == "chrome" else webdriver.FirefoxOptions()
         )
         options.set_capability("selenoid:options", {"enableVNC": True, "enableVideo": True})
-        browser.config.driver = webdriver.Remote(command_executor=selenoid_url, options=options)
+        browser.config.driver = webdriver.Remote(command_executor=remote_url, options=options)
     else:
         browser.config.browser_name = browser_name  # type: ignore[attr-defined]
 
@@ -64,9 +141,7 @@ def ui_browser_setup():
         pass
 
     session_id = getattr(browser.driver, "session_id", None)
-    if session_id and selenoid_url:
-        host = selenoid_url.replace("wd/hub", "")
-        video_url = f"{host}video/{session_id}.mp4"
-        allure.attach(video_url, name="video_url", attachment_type=allure.attachment_type.URI_LIST)
+    if session_id and remote_url:
+        _attach_selenoid_video(session_id, remote_url)
 
     browser.quit()
