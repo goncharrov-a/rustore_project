@@ -1,42 +1,18 @@
 # Дипломный QA проект: UI + API + Mobile Automation
 
 <p align="center">
-  <a href="#-технологический-стек">
-    <img src="media/icons/python_logo_and_wordmark.svg" height="44" alt="Python">
-  </a>
-  <a href="#-технологический-стек">
-    <img src="media/icons/pytest_logo.svg" height="44" alt="Pytest">
-  </a>
-  <a href="#-ui-web-rustore">
-    <img src="media/icons/selene.png" height="44" alt="Selene">
-  </a>
-  <a href="#-ui-web-rustore">
-    <img src="media/icons/selenium.png" height="44" alt="Selenium">
-  </a>
-  <a href="#-api-fakestoreapi">
-    <img src="media/icons/requests.png" height="44" alt="Requests">
-  </a>
-  <a href="#-отчетность-и-интеграции">
-    <img src="media/icons/allure_Report.svg" height="44" alt="Allure Report">
-  </a>
-  <a href="#-mobile-wikipedia-apk">
-    <img src="media/icons/appium.svg" height="44" alt="Appium">
-  </a>
-  <a href="#-ui-web-rustore">
-    <img src="media/icons/selenoid.svg" height="44" alt="Selenoid">
-  </a>
-  <a href="#-mobile-wikipedia-apk">
-    <img src="media/icons/browserstack.svg" height="44" alt="BrowserStack">
-  </a>
-  <a href="#-ci-jenkins">
-    <img src="media/icons/jenkins.svg" height="44" alt="Jenkins">
-  </a>
-  <a href="#-отчетность-и-интеграции">
-    <img src="media/icons/jira.svg" height="44" alt="Jira">
-  </a>
-  <a href="#-отчетность-и-интеграции">
-    <img src="media/icons/telegram.svg" height="44" alt="Telegram">
-  </a>
+  <img src="./media/icons/python_logo_and_wordmark.svg" height="44" alt="Python">
+  <img src="./media/icons/pytest_logo.svg" height="44" alt="Pytest">
+  <img src="./media/icons/selene.png" height="44" alt="Selene">
+  <img src="./media/icons/selenium.png" height="44" alt="Selenium">
+  <img src="./media/icons/requests.png" height="44" alt="Requests">
+  <img src="./media/icons/allure_Report.svg" height="44" alt="Allure Report">
+  <img src="./media/icons/appium.svg" height="44" alt="Appium">
+  <img src="./media/icons/android.png" height="44" alt="Android">
+  <img src="./media/icons/selenoid.svg" height="44" alt="Selenoid">
+  <img src="./media/icons/jenkins.svg" height="44" alt="Jenkins">
+  <img src="./media/icons/jira.svg" height="44" alt="Jira">
+  <img src="./media/icons/telegram.svg" height="44" alt="Telegram">
 </p>
 
 <p align="center">
@@ -299,4 +275,3 @@ allure serve allure-results
 - Добавить smoke/regression пайплайны с раздельными джобами
 
 ---
-
