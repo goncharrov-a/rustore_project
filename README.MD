@@ -217,6 +217,12 @@ allure serve allure-results
 
 ## Отчетность и интеграции
 
+### Ссылки на артефакты
+
+- **Allure TestOps Dashboard:** [Проект 5145 / Dashboards](https://allure.autotests.cloud/project/5145/dashboards)
+- **Jenkins Job:** [rustore_final_project](https://jenkins.autotests.cloud/job/rustore_final_project/)
+- **Jira Issue:** [HOMEWORK-1588](https://jira.autotests.cloud/browse/HOMEWORK-1588)
+
 ### Allure Report
 
 <p align="center">
