@@ -52,18 +52,22 @@ pipeline {
           . .venv/bin/activate
 
           MARK_EXPR=""
+          EXTRA_ENV=""
           case "${TEST_SCOPE}" in
             ui)
               MARK_EXPR="-m ui tests/ui"
               ;;
             api)
               MARK_EXPR="-m api tests/api"
+              EXTRA_ENV="API_RETRIES=6 API_RETRY_DELAY_SECONDS=2.0"
               ;;
             ui_api)
               MARK_EXPR="-m 'ui or api' tests"
+              EXTRA_ENV="API_RETRIES=6 API_RETRY_DELAY_SECONDS=2.0"
               ;;
             all_no_mobile)
               MARK_EXPR="-m 'ui or api' tests"
+              EXTRA_ENV="API_RETRIES=6 API_RETRY_DELAY_SECONDS=2.0"
               ;;
             mobile)
               MARK_EXPR="-m mobile tests/mobile"
@@ -74,7 +78,7 @@ pipeline {
               ;;
           esac
 
-          pytest ${MARK_EXPR} --alluredir=allure-results
+          ${EXTRA_ENV} pytest ${MARK_EXPR} --alluredir=allure-results
         '''
       }
     }
