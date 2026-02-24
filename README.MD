@@ -265,9 +265,10 @@ allure serve allure-results
 
 ### Видео мобильного прогона
 
-<p align="center">
-  <img src="./media/images/demo.gif" alt="Mobile run demo" width="320">
-</p>
+### Пример видео прохождения mobile-автотеста
+
+![2026-01-1819-13-14-ezgif.com-video-to-gif-converter (1).gif](media/image/2026-01-1819-13-14-ezgif.com-video-to-gif-converter%20%281%29.gif)
+
 
 ---
 
