@@ -9,6 +9,7 @@ import pytest
 # selene==2.0.0rc9 imports AnyDevice from selenium.action_chains,
 # but recent selenium versions do not export this alias.
 import selenium.webdriver.common.action_chains as _action_chains
+from dotenv import load_dotenv
 
 if not hasattr(_action_chains, "AnyDevice"):
     _action_chains.AnyDevice = object  # type: ignore[attr-defined]
@@ -95,6 +96,10 @@ def _attach_selenoid_video(session_id: str, remote_url: str) -> None:
 
 @pytest.fixture(scope="function", autouse=True)
 def ui_browser_setup():
+    # Jenkins freestyle often writes variables to ".env" in workspace.
+    # Load it explicitly so SELENOID_* and other vars are available for the test run.
+    load_dotenv('.env', override=True)
+
     base_url = os.getenv("UI_BASE_URL", "https://www.rustore.ru")
     browser_name = os.getenv("UI_BROWSER", "chrome")
     width = int(os.getenv("UI_BROWSER_WIDTH", "1920"))
@@ -117,31 +122,34 @@ def ui_browser_setup():
 
     yield
 
-    allure.attach(
-        browser.driver.get_screenshot_as_png(),
-        name="screenshot",
-        attachment_type=allure.attachment_type.PNG,
-    )
-    allure.attach(
-        browser.driver.page_source,
-        name="page_source",
-        attachment_type=allure.attachment_type.HTML,
-    )
+    executor = browser.config._executor
+    if executor.is_driver_set:
+        driver = executor.driver_instance
+        allure.attach(
+            driver.get_screenshot_as_png(),
+            name='screenshot',
+            attachment_type=allure.attachment_type.PNG,
+        )
+        allure.attach(
+            driver.page_source,
+            name='page_source',
+            attachment_type=allure.attachment_type.HTML,
+        )
 
-    try:
-        get_log = getattr(browser.driver, "get_log", None)
-        if callable(get_log):
-            logs = get_log("browser")
-            allure.attach(
-                json.dumps(logs, indent=2, ensure_ascii=False),
-                name="browser_logs",
-                attachment_type=allure.attachment_type.JSON,
-            )
-    except Exception:
-        pass
+        try:
+            get_log = getattr(driver, 'get_log', None)
+            if callable(get_log):
+                logs = get_log('browser')
+                allure.attach(
+                    json.dumps(logs, indent=2, ensure_ascii=False),
+                    name='browser_logs',
+                    attachment_type=allure.attachment_type.JSON,
+                )
+        except Exception:
+            pass
 
-    session_id = getattr(browser.driver, "session_id", None)
-    if session_id and remote_url:
-        _attach_selenoid_video(session_id, remote_url)
+        session_id = getattr(driver, 'session_id', None)
+        if session_id and remote_url:
+            _attach_selenoid_video(session_id, remote_url)
 
-    browser.quit()
+        driver.quit()
