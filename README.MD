@@ -244,18 +244,34 @@ allure serve allure-results
 
 ### Allure Report
 
+#### Главная страница отчета
+
 <p align="center">
   <img src="media/images/allure_main.jpg" alt="Allure Main" width="80%">
 </p>
 
+#### UI результаты
+
 <p align="center">
-  <img src="media/images/allure_suits.jpg" alt="Allure Suites" width="80%">
+  <img src="media/images/allure_ui.jpg" alt="Allure UI" width="80%">
+</p>
+
+#### API результаты
+
+<p align="center">
+  <img src="media/images/allure_api.jpg" alt="Allure API" width="80%">
+</p>
+
+#### Mobile результаты
+
+<p align="center">
+  <img src="media/images/allure_mobile.jpg" alt="Allure Mobile" width="80%">
 </p>
 
 ### Пример видео прохождения mobile-автотеста
 
 <p align="center">
-  <img src="media/images/demo.gif" alt="demo.gif" width="420">
+  <img src="media/images/demo.gif" alt="Mobile run demo" width="320">
 </p>
 
 
