@@ -263,11 +263,9 @@ allure serve allure-results
 ![Jira Integration](media/images/jira_integration.png)
 ```
 
-### Видео мобильного прогона
-
 ### Пример видео прохождения mobile-автотеста
 
-![2026-01-1819-13-14-ezgif.com-video-to-gif-converter (1).gif](media/image/2026-01-1819-13-14-ezgif.com-video-to-gif-converter%20%281%29.gif)
+![demo.gif](media/images/demo.gif)
 
 
 ---
