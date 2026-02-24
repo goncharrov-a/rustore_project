@@ -252,17 +252,6 @@ allure serve allure-results
   <img src="media/images/allure_suits.jpg" alt="Allure Suites" width="80%">
 </p>
 
-### TestOps / Jenkins / Telegram / Jira
-
-Добавьте ваши финальные скриншоты в `media/images/` и раскомментируйте/обновите блоки ниже:
-
-```md
-![TestOps Dashboard](media/images/testops_dashboard.png)
-![Jenkins Job](media/images/jenkins_pipeline.png)
-![Telegram Report](media/images/telegram_report.png)
-![Jira Integration](media/images/jira_integration.png)
-```
-
 ### Пример видео прохождения mobile-автотеста
 
 <p align="center">
