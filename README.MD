@@ -191,6 +191,25 @@ pytest tests/mobile -m mobile --alluredir=allure-results
 allure serve allure-results
 ```
 
+### Jenkins запуск
+
+В репозитории добавлен `Jenkinsfile` для pipeline запуска с параметрами:
+
+- `TEST_SCOPE`: `ui` / `api` / `ui_api` / `all_no_mobile` / `mobile`
+- `UI_BASE_URL`, `UI_BROWSER`
+- `API_BASE_URL`, `API_TIMEOUT`
+- `SELENOID_URL`, `SELENOID_LOGIN`, `SELENOID_PASS`
+
+Для UI-видео в Allure:
+
+1. Укажи `SELENOID_URL` (host или full URL к `wd/hub`)
+2. При необходимости укажи `SELENOID_LOGIN` / `SELENOID_PASS`
+3. Убедись, что Selenoid video endpoint доступен (`/video/<session_id>.mp4`)
+
+Тогда в Allure будет:
+- `video_<session_id>.html` (встроенный плеер)
+- `video_url` (прямая ссылка на mp4)
+
 ---
 
 ## Параметры окружения
@@ -225,51 +244,37 @@ allure serve allure-results
 
 ### Allure Report
 
+#### Главная страница отчета
+
 <p align="center">
   <img src="media/images/allure_main.jpg" alt="Allure Main" width="80%">
 </p>
 
+#### UI результаты
+
 <p align="center">
-  <img src="media/images/allure_suits.jpg" alt="Allure Suites" width="80%">
+  <img src="media/images/allure_ui.jpg" alt="Allure UI" width="80%">
 </p>
 
-### TestOps / Jenkins / Telegram / Jira
+#### API результаты
 
-Добавьте ваши финальные скриншоты в `media/images/` и раскомментируйте/обновите блоки ниже:
+<p align="center">
+  <img src="media/images/allure_api.jpg" alt="Allure API" width="80%">
+</p>
 
-```md
-![TestOps Dashboard](media/images/testops_dashboard.png)
-![Jenkins Job](media/images/jenkins_pipeline.png)
-![Telegram Report](media/images/telegram_report.png)
-![Jira Integration](media/images/jira_integration.png)
-```
+#### Mobile результаты
 
-### Видео мобильного прогона
+<p align="center">
+  <img src="media/images/allure_mobile.jpg" alt="Allure Mobile" width="80%">
+</p>
 
-```md
-![Mobile run](media/images/mobile_run.gif)
-```
+### Пример видео прохождения mobile-автотеста
 
----
+<p align="center">
+  <img src="media/images/demo.gif" alt="Mobile run demo" width="320">
+</p>
 
-## Сценарий защиты диплома
 
-Это краткий план демонстрации на защите (чтобы показать проект уверенно и последовательно):
-
-1. Показать структуру репозитория и объяснить 3 блока: UI/API/Mobile.
-2. Запустить выборочно по одному тесту из каждого блока.
-3. Запустить полный прогон `pytest tests --alluredir=allure-results`.
-4. Открыть Allure и показать:
-   - группировки `epic/feature/story`
-   - теги/лейблы/критичность
-   - вложения (screenshot/page source/logs/video/url)
-5. Показать интеграции: Jenkins, TestOps, Jira, Telegram.
-6. Коротко объяснить архитектурные решения:
-   - PageObject в UI
-   - endpoint + model + schema в API
-   - pydantic config + dotenv в Mobile
-
-Этот раздел нужен именно для защиты: это не "теория", а готовый чеклист демонстрации проекта перед преподавателем.
 
 ---
 
