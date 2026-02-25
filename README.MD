@@ -238,8 +238,8 @@ allure serve allure-results
 
 ### Ссылки на артефакты
 
-- **Allure TestOps Dashboard:** [goncharov_final_project](https://allure.autotests.cloud/project/5145/dashboards)
-- **Jenkins Job:** [goncharov_final_project](https://jenkins.autotests.cloud/job/goncharov_final_project/)
+- **Allure TestOps Dashboard:** [goncharov_final_project](https://allure.autotests.cloud/project/5147/dashboards)
+- **Jenkins Job:** [goncharov_final_project](https://jenkins.autotests.cloud/user/goncharov-xx/my-views/view/all/job/goncharov_final/)
 - **Jira Issue:** [HOMEWORK-1588](https://jira.autotests.cloud/browse/HOMEWORK-1588)
 
 ### Allure Report
@@ -273,4 +273,3 @@ allure serve allure-results
 <p align="center">
   <img src="media/images/demo.gif" alt="Mobile run demo" width="320">
 </p>
-
