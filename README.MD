@@ -151,7 +151,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Проверка качества кода
+### 2. Проверка качества кода с помощью black, ruff, mypy
 
 ```bash
 make qa
@@ -238,8 +238,8 @@ allure serve allure-results
 
 ### Ссылки на артефакты
 
-- **Allure TestOps Dashboard:** [Проект 5145 / Dashboards](https://allure.autotests.cloud/project/5145/dashboards)
-- **Jenkins Job:** [rustore_final_project](https://jenkins.autotests.cloud/job/rustore_final_project/)
+- **Allure TestOps Dashboard:** [goncharov_final_project](https://allure.autotests.cloud/project/5147/dashboards)
+- **Jenkins Job:** [goncharov_final_project](https://jenkins.autotests.cloud/user/goncharov-xx/my-views/view/all/job/goncharov_final/)
 - **Jira Issue:** [HOMEWORK-1588](https://jira.autotests.cloud/browse/HOMEWORK-1588)
 
 ### Allure Report
@@ -273,16 +273,3 @@ allure serve allure-results
 <p align="center">
   <img src="media/images/demo.gif" alt="Mobile run demo" width="320">
 </p>
-
-
-
----
-
-## Roadmap
-
-- Добавить автозагрузку результатов в Allure TestOps из CI
-- Добавить публикацию артефактов после каждого прогона в Jenkins
-- Расширить mobile-набор до негативных и сетевых сценариев
-- Добавить smoke/regression пайплайны с раздельными джобами
-
----
