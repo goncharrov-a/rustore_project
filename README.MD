@@ -268,6 +268,18 @@ allure serve allure-results
   <img src="media/images/allure_mobile.jpg" alt="Allure Mobile" width="80%">
 </p>
 
+### Allure TestOps
+
+<p align="center">
+  <img src="media/images/testOps.jpg" alt="Allure TestOps Run" width="90%">
+</p>
+
+### Telegram отчет
+
+<p align="center">
+  <img src="media/images/tg.jpg" alt="Telegram Notification" width="35%">
+</p>
+
 ### Пример видео прохождения mobile-автотеста
 
 <p align="center">
