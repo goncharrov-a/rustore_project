@@ -54,9 +54,9 @@
 
 Единый дипломный репозиторий по автоматизации тестирования:
 
-1. **UI** — web-тесты [RuStore](https://www.rustore.ru/) с PageObject + Selene
-2. **API** — тесты [FakeStore API](https://fakestoreapi.com/docs) через endpoint-слой
-3. **Mobile** — Android-тесты Wikipedia APK через Appium
+1. **UI** - web-тесты [RuStore](https://www.rustore.ru/) с PageObject + Selene
+2. **API** - тесты [FakeStore API](https://fakestoreapi.com/docs) через endpoint-слой
+3. **Mobile** - Android-тесты Wikipedia APK через Appium
 
 Цель проекта: показать полный QA-контур (Web + API + Mobile) с CI, Allure/TestOps, Jira и Telegram-уведомлениями.
 
