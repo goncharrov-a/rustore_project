@@ -4,7 +4,6 @@ from urllib.parse import urlsplit, urlunsplit
 
 import allure
 import pytest
-
 # Compatibility shim:
 # selene==2.0.0rc9 imports AnyDevice from selenium.action_chains,
 # but recent selenium versions do not export this alias.

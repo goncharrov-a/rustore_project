@@ -62,9 +62,9 @@ class BaseEndpoint:
                 continue
 
             if (
-                method_upper == "GET"
-                and response.status_code in self.retry_statuses
-                and attempt < attempts
+                    method_upper == "GET"
+                    and response.status_code in self.retry_statuses
+                    and attempt < attempts
             ):
                 logger.warning(
                     "retryable status=%s on attempt=%s/%s | method=%s | url=%s",

@@ -52,14 +52,14 @@ def _prepare_wikipedia_home(driver):
     with allure.step("Дождаться главного экрана Wikipedia"):
         WebDriverWait(driver, 25).until(
             lambda d: (
-                _first_existing(
-                    d,
-                    [
-                        (AppiumBy.ID, "org.wikipedia:id/search_container"),
-                        (AppiumBy.ID, "org.wikipedia:id/main_toolbar_wordmark"),
-                    ],
-                )
-                is not None
+                    _first_existing(
+                        d,
+                        [
+                            (AppiumBy.ID, "org.wikipedia:id/search_container"),
+                            (AppiumBy.ID, "org.wikipedia:id/main_toolbar_wordmark"),
+                        ],
+                    )
+                    is not None
             )
         )
 
@@ -149,14 +149,14 @@ class TestWikipediaApp:
         with allure.step("Проверить, что результаты поиска не пустые"):
             WebDriverWait(mobile_driver, 20).until(
                 lambda d: (
-                    _first_existing(
-                        d,
-                        [
-                            (AppiumBy.ID, "org.wikipedia:id/page_list_item_title"),
-                            (AppiumBy.ID, "org.wikipedia:id/search_results_list"),
-                        ],
-                    )
-                    is not None
+                        _first_existing(
+                            d,
+                            [
+                                (AppiumBy.ID, "org.wikipedia:id/page_list_item_title"),
+                                (AppiumBy.ID, "org.wikipedia:id/search_results_list"),
+                            ],
+                        )
+                        is not None
                 )
             )
 
@@ -192,14 +192,14 @@ class TestWikipediaApp:
         with allure.step("Проверить открытие экрана статьи"):
             WebDriverWait(mobile_driver, 20).until(
                 lambda d: (
-                    _first_existing(
-                        d,
-                        [
-                            (AppiumBy.ID, "org.wikipedia:id/view_page_title_text"),
-                            (AppiumBy.ID, "org.wikipedia:id/page_toolbar"),
-                        ],
-                    )
-                    is not None
+                        _first_existing(
+                            d,
+                            [
+                                (AppiumBy.ID, "org.wikipedia:id/view_page_title_text"),
+                                (AppiumBy.ID, "org.wikipedia:id/page_toolbar"),
+                            ],
+                        )
+                        is not None
                 )
             )
 
@@ -243,22 +243,22 @@ class TestWikipediaApp:
         with allure.step("Проверить отсутствие карточек результатов"):
             WebDriverWait(mobile_driver, 20).until(
                 lambda d: (
-                    _first_existing(
-                        d,
-                        [
-                            (AppiumBy.ID, "org.wikipedia:id/search_results_list"),
-                            (AppiumBy.ID, "org.wikipedia:id/search_empty_container"),
-                            (AppiumBy.ID, "org.wikipedia:id/search_empty_message"),
-                        ],
-                    )
-                    is not None
+                        _first_existing(
+                            d,
+                            [
+                                (AppiumBy.ID, "org.wikipedia:id/search_results_list"),
+                                (AppiumBy.ID, "org.wikipedia:id/search_empty_container"),
+                                (AppiumBy.ID, "org.wikipedia:id/search_empty_message"),
+                            ],
+                        )
+                        is not None
                 )
             )
             assert (
-                _first_existing(
-                    mobile_driver, [(AppiumBy.ID, "org.wikipedia:id/page_list_item_title")]
-                )
-                is None
+                    _first_existing(
+                        mobile_driver, [(AppiumBy.ID, "org.wikipedia:id/page_list_item_title")]
+                    )
+                    is None
             )
 
     @allure.tag("MOBILE", "Wikipedia")
@@ -281,13 +281,13 @@ class TestWikipediaApp:
             mobile_driver.back()
             WebDriverWait(mobile_driver, 20).until(
                 lambda d: (
-                    _first_existing(
-                        d,
-                        [
-                            (AppiumBy.ID, "org.wikipedia:id/search_container"),
-                            (AppiumBy.ID, "org.wikipedia:id/main_toolbar_wordmark"),
-                        ],
-                    )
-                    is not None
+                        _first_existing(
+                            d,
+                            [
+                                (AppiumBy.ID, "org.wikipedia:id/search_container"),
+                                (AppiumBy.ID, "org.wikipedia:id/main_toolbar_wordmark"),
+                            ],
+                        )
+                        is not None
                 )
             )
