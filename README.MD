@@ -181,7 +181,7 @@ allure serve allure-results
 
 - **Allure TestOps:** [goncharov_final_project](https://allure.autotests.cloud/project/5147/dashboards)
 - **Jenkins:** [goncharov_final](https://jenkins.autotests.cloud/job/goncharov_final/)
-- **Allure Report:** [open](https://jenkins.autotests.cloud/job/goncharov_final/10/allure/)
+- **Allure Report:** [last_build_report](https://jenkins.autotests.cloud/job/goncharov_final/10/allure/)
 - **Jira:** [HOMEWORK-1588](https://jira.autotests.cloud/browse/HOMEWORK-1588)
 
 ### Allure: главная
