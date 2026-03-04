@@ -1,25 +1,36 @@
-# Дипломный QA проект: UI + API + Mobile Automation
+# 🧪 Дипломный QA проект: RuStore (UI + API + Mobile)
 
 <p align="center">
-  <img src="./media/icons/python_logo_and_wordmark.svg" height="44" alt="Python">
-  <img src="./media/icons/pytest_logo.svg" height="44" alt="Pytest">
-  <img src="./media/icons/selene.png" height="44" alt="Selene">
-  <img src="./media/icons/selenium.png" height="44" alt="Selenium">
-  <img src="./media/icons/requests.png" height="44" alt="Requests">
-  <img src="./media/icons/allure_Report.svg" height="44" alt="Allure Report">
-  <img src="./media/icons/appium.svg" height="44" alt="Appium">
-  <img src="./media/icons/android.png" height="44" alt="Android">
-  <img src="./media/icons/selenoid.svg" height="44" alt="Selenoid">
-  <img src="./media/icons/jenkins.svg" height="44" alt="Jenkins">
-  <img src="./media/icons/jira.svg" height="44" alt="Jira">
-  <img src="./media/icons/telegram.svg" height="44" alt="Telegram">
+  <img src="./media/images/rustore.jpg" alt="RuStore" width="92%">
 </p>
 
 <p align="center">
-  <img alt="Python" src="https://img.shields.io/badge/Python-3.10+-blue.svg">
-  <img alt="Pytest" src="https://img.shields.io/badge/Pytest-Autotests-0A9EDC.svg">
-  <img alt="Allure" src="https://img.shields.io/badge/Allure-Report-6E40C9.svg">
-  <img alt="Platform" src="https://img.shields.io/badge/Platforms-UI%20%7C%20API%20%7C%20Mobile-success">
+  <img src="./media/icons/python_logo_and_wordmark.svg" height="42" alt="Python">
+  <img src="./media/icons/pytest_logo.svg" height="42" alt="Pytest">
+  <img src="./media/icons/selene.png" height="42" alt="Selene">
+  <img src="./media/icons/selenium.png" height="42" alt="Selenium">
+  <img src="./media/icons/requests.png" height="42" alt="Requests">
+  <img src="./media/icons/allure_Report.svg" height="42" alt="Allure">
+  <img src="./media/icons/appium.svg" height="42" alt="Appium">
+  <img src="./media/icons/android.png" height="42" alt="Android">
+  <img src="./media/icons/selenoid.svg" height="42" alt="Selenoid">
+  <img src="./media/icons/jenkins.svg" height="42" alt="Jenkins">
+  <img src="./media/icons/jira.svg" height="42" alt="Jira">
+  <img src="./media/icons/telegram.svg" height="42" alt="Telegram">
+</p>
+
+<p align="center">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-blue">
+  <img alt="Pytest" src="https://img.shields.io/badge/Pytest-25%20tests-0A9EDC">
+  <img alt="UI" src="https://img.shields.io/badge/UI-10-success">
+  <img alt="API" src="https://img.shields.io/badge/API-8-success">
+  <img alt="Mobile" src="https://img.shields.io/badge/Mobile-7-success">
+</p>
+
+<p align="center">
+  <a href="https://jenkins.autotests.cloud/job/goncharov_final/">Jenkins</a> •
+  <a href="https://allure.autotests.cloud/project/5147/dashboards">Allure TestOps</a> •
+  <a href="https://jira.autotests.cloud/browse/HOMEWORK-1588">Jira</a>
 </p>
 
 ---
@@ -27,131 +38,96 @@
 ## Содержание
 
 - [О проекте](#о-проекте)
-- [Технологический стек](#технологический-стек)
-- [Покрытие и блоки тестирования](#покрытие-и-блоки-тестирования)
-- [Архитектура проекта](#архитектура-проекта)
-- [Быстрый старт](#быстрый-старт)
-- [Запуск тестов](#запуск-тестов)
-- [Отчетность и интеграции](#отчетность-и-интеграции)
-- [Сценарий защиты диплома](#сценарий-защиты-диплома)
+- [Что покрыто](#что-покрыто)
+- [Архитектура](#архитектура)
+- [Быстрый запуск](#быстрый-запуск)
+- [Команды запуска](#команды-запуска)
+- [Отчеты и интеграции](#отчеты-и-интеграции)
+- [Сценарий защиты (2-3 минуты)](#сценарий-защиты-2-3-минуты)
+- [Инженерные фишки проекта](#инженерные-фишки-проекта)
 - [Roadmap](#roadmap)
 
 ---
 
 ## О проекте
 
-Этот репозиторий объединяет три части дипломной работы по автоматизации тестирования:
+Единый дипломный репозиторий по автоматизации тестирования:
 
-1. **UI (Web):** тестирование [RuStore](https://www.rustore.ru/)
-2. **API:** тестирование [FakeStore API](https://fakestoreapi.com/docs)
-3. **Mobile:** тестирование **Wikipedia APK** через Appium
+1. **UI** — web-тесты [RuStore](https://www.rustore.ru/) с PageObject + Selene
+2. **API** — тесты [FakeStore API](https://fakestoreapi.com/docs) через endpoint-слой
+3. **Mobile** — Android-тесты Wikipedia APK через Appium
 
-Проект оформлен как единая QA-система с:
-- единым стилем Allure-разметки
-- автоприложениями (attachments) в отчетах
-- запуском по слоям (`ui`, `api`, `mobile`)
-- готовностью к CI/CD и отчетам в TestOps
+Цель проекта: показать полный QA-контур (Web + API + Mobile) с CI, Allure/TestOps, Jira и Telegram-уведомлениями.
 
 ---
 
-## Технологический стек
+## Что покрыто
 
-- **Python 3.10+**
-- **Pytest**
-- **Selene + Selenium** (UI)
-- **Requests + JSON Schema + Pydantic** (API)
-- **Appium + UiAutomator2** (Mobile)
-- **Allure Report / Allure TestOps**
-- **Jenkins**
-- **Jira**
-- **Telegram notifications**
+| Блок | Кол-во | Фокус проверок |
+|---|---:|---|
+| UI (`tests/ui`) | 10 | Главная, хедер, поиск, инструкция, футер, карточка приложения |
+| API (`tests/api`) | 8 | GET/POST/DELETE, статус-коды, значения ответа, JSON Schema |
+| Mobile (`tests/mobile`) | 7 | Главный экран, поиск, валидация результатов, негативные кейсы |
 
----
+### Тестовая матрица
 
-## Покрытие и блоки тестирования
-
-### UI (Web, RuStore)
-
-- `tests/ui/test_main_page.py`
-- `tests/ui/test_header_navigation.py`
-- `tests/ui/test_search.py`
-- `tests/ui/test_instruction_page.py`
-- `tests/ui/test_footer.py`
-- `tests/ui/test_app_page.py`
-
-Что проверяется:
-- главная страница и базовые элементы
-- хедер и навигация
-- поиск и результаты
-- карточка приложения
-- переход на инструкцию скачивания
-- элементы футера
-
-### API (FakeStore API)
-
-- `tests/api/test_products_api.py`
-- `tests/api/test_users_api.py`
-- `tests/api/test_carts_api.py`
-
-Что проверяется:
-- методы **GET / POST / DELETE**
-- статус-коды
-- бизнес-значения в ответе
-- schema validation (request/response)
-- endpoint-подход с базовым URI из фикстуры
-
-### Mobile (Wikipedia APK)
-
-- `tests/mobile/test_wikipedia_app.py`
-
-Что проверяется:
-- запуск приложения
-- открытие и работа поиска
-- проверка результатов
-- доп. пользовательские сценарии в поиске
+| Scope | Маркеры | Команда |
+|---|---|---|
+| Только UI | `-m ui` | `pytest tests/ui -m ui --alluredir=allure-results` |
+| Только API | `-m api` | `pytest tests/api -m api --alluredir=allure-results` |
+| Только Mobile | `-m mobile` | `pytest tests/mobile -m mobile --alluredir=allure-results` |
+| UI + API | `-m "ui or api"` | `pytest tests -m "ui or api" --alluredir=allure-results` |
+| Все | без фильтра | `pytest tests --alluredir=allure-results` |
 
 ---
 
-## Архитектура проекта
+## Архитектура
+
+```mermaid
+flowchart LR
+    A["Pytest test suites\n(UI/API/Mobile)"] --> B["Layers\nPageObjects / Endpoints / Mobile flows"]
+    B --> C["Execution\nJenkins or local"]
+    C --> D["allure-results"]
+    D --> E["Allure Report"]
+    D --> F["Allure TestOps"]
+    E --> G["Telegram notifications"]
+    F --> H["Manual tests & analytics"]
+    F --> I["Jira links"]
+```
+
+### Структура репозитория
 
 ```text
 .
-├── api/
-│   └── endpoints/                 # Endpoint-классы API
-├── config/
-│   └── mobile_config.py           # Pydantic-конфиги Mobile (local/remote)
-├── media/
-│   ├── icons/                     # Иконки для README
-│   └── images/                    # Скриншоты отчетов и демонстрации
-├── models/
-│   └── api/                       # Pydantic request/response модели
-├── pages/                         # UI PageObjects
-├── resources/
-│   └── apk/                       # APK для mobile запуска
-├── schemas/
-│   └── api/                       # JSON схемы API
+├── api/endpoints/              # Endpoint-классы API
+├── config/                     # Конфиги (в т.ч. mobile)
+├── models/api/                 # Pydantic модели
+├── pages/                      # UI PageObjects
+├── resources/                  # APK / данные
+├── schemas/api/                # JSON-схемы
 ├── tests/
+│   ├── ui/
 │   ├── api/
-│   ├── mobile/
-│   └── ui/
-├── pytest.ini
+│   └── mobile/
+├── media/
+│   ├── icons/
+│   └── images/
+├── Jenkinsfile
 ├── requirements.txt
-└── Makefile
+└── README.MD
 ```
 
 ---
 
-## Быстрый старт
-
-### 1. Установка зависимостей
+## Быстрый запуск
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Проверка качества кода с помощью black, ruff, mypy
+Проверка качества:
 
 ```bash
 make qa
@@ -159,129 +135,85 @@ make qa
 
 ---
 
-## Запуск тестов
+## Команды запуска
 
-### Все тесты сразу
+Все тесты:
 
 ```bash
 pytest tests --alluredir=allure-results
 ```
 
-### Только UI
+UI + API (частый CI-сценарий):
 
 ```bash
-pytest tests/ui -m ui --alluredir=allure-results
+pytest tests -m "ui or api" --alluredir=allure-results
 ```
 
-### Только API
-
-```bash
-pytest tests/api -m api --alluredir=allure-results
-```
-
-### Только Mobile
-
-```bash
-pytest tests/mobile -m mobile --alluredir=allure-results
-```
-
-### Просмотр Allure-отчета
+Просмотр отчета локально:
 
 ```bash
 allure serve allure-results
 ```
 
-### Jenkins запуск
-
-В репозитории добавлен `Jenkinsfile` для pipeline запуска с параметрами:
-
-- `TEST_SCOPE`: `ui` / `api` / `ui_api` / `all_no_mobile` / `mobile`
-- `UI_BASE_URL`, `UI_BROWSER`
-- `API_BASE_URL`, `API_TIMEOUT`
-- `SELENOID_URL`, `SELENOID_LOGIN`, `SELENOID_PASS`
-
-Для UI-видео в Allure:
-
-1. Укажи `SELENOID_URL` (host или full URL к `wd/hub`)
-2. При необходимости укажи `SELENOID_LOGIN` / `SELENOID_PASS`
-3. Убедись, что Selenoid video endpoint доступен (`/video/<session_id>.mp4`)
-
-Тогда в Allure будет:
-- `video_<session_id>.html` (встроенный плеер)
-- `video_url` (прямая ссылка на mp4)
-
 ---
 
-## Параметры окружения
+## Отчеты и интеграции
 
-### UI
+- **Allure TestOps:** [goncharov_final_project](https://allure.autotests.cloud/project/5147/dashboards)
+- **Jenkins:** [goncharov_final](https://jenkins.autotests.cloud/job/goncharov_final/)
+- **Jira:** [HOMEWORK-1588](https://jira.autotests.cloud/browse/HOMEWORK-1588)
 
-- `UI_BASE_URL` (default: `https://www.rustore.ru`)
-- `UI_BROWSER` (default: `chrome`)
-- `UI_BROWSER_WIDTH` (default: `1920`)
-- `UI_BROWSER_HEIGHT` (default: `1080`)
-- `SELENOID_URL` (опционально, удаленный запуск)
-
-### API
-
-- `API_BASE_URL` (default: `https://fakestoreapi.com`)
-- `API_TIMEOUT` (default: `15`)
-
-### Mobile
-
-- `.env.mobile.local` — локальный запуск (эмулятор/реальный девайс)
-- `MOBILE_ENV=remote` + `.env.mobile.remote` — запуск через BrowserStack (по необходимости)
-
----
-
-## Отчетность и интеграции
-
-### Ссылки на артефакты
-
-- **Allure TestOps Dashboard:** [goncharov_final_project](https://allure.autotests.cloud/project/5147/dashboards)
-- **Jenkins Job:** [goncharov_final_project](https://jenkins.autotests.cloud/user/goncharov-xx/my-views/view/all/job/goncharov_final/)
-- **Jira Issue:** [HOMEWORK-1588](https://jira.autotests.cloud/browse/HOMEWORK-1588)
-
-### Allure Report
-
-#### Главная страница отчета
+### Allure: главная
 
 <p align="center">
-  <img src="media/images/allure_main.jpg" alt="Allure Main" width="80%">
+  <img src="media/images/allure_main.jpg" alt="Allure Main" width="86%">
 </p>
 
-#### UI результаты
+### Allure: UI
 
 <p align="center">
-  <img src="media/images/allure_ui.jpg" alt="Allure UI" width="80%">
+  <img src="media/images/allure_ui.jpg" alt="Allure UI" width="86%">
 </p>
 
-#### API результаты
+### Allure: API
 
 <p align="center">
-  <img src="media/images/allure_api.jpg" alt="Allure API" width="80%">
+  <img src="media/images/allure_api.jpg" alt="Allure API" width="86%">
 </p>
 
-#### Mobile результаты
+### Allure: Mobile
 
 <p align="center">
-  <img src="media/images/allure_mobile.jpg" alt="Allure Mobile" width="80%">
+  <img src="media/images/allure_mobile.jpg" alt="Allure Mobile" width="86%">
 </p>
 
-### Allure TestOps
+### Allure TestOps: прогон
 
 <p align="center">
-  <img src="media/images/testOps.jpg" alt="Allure TestOps Run" width="90%">
+  <img src="media/images/testOps.jpg" alt="Allure TestOps Run" width="92%">
 </p>
 
-### Telegram отчет
+### Telegram-уведомление
 
 <p align="center">
-  <img src="media/images/tg.jpg" alt="Telegram Notification" width="35%">
+  <img src="media/images/tg.jpg" alt="Telegram Notification" width="34%">
 </p>
 
-### Пример видео прохождения mobile-автотеста
+### Пример mobile-прогона
 
 <p align="center">
   <img src="media/images/demo.gif" alt="Mobile run demo" width="320">
 </p>
+
+---
+
+
+## Инженерные фишки проекта
+
+- Единый стиль Allure-разметки (epic/feature/story, tags, severity, ids).
+- Endpoint-слой и модели для API (request/response + schema validation).
+- UI attachments: screenshot / page source / browser logs / video URL.
+- Jenkins-параметры для гибкого запуска по scope.
+- Retry-механизм для нестабильных внешних API-ответов в CI.
+
+---
