@@ -4,6 +4,7 @@ from urllib.parse import urlsplit, urlunsplit
 
 import allure
 import pytest
+
 # Compatibility shim:
 # selene==2.0.0rc9 imports AnyDevice from selenium.action_chains,
 # but recent selenium versions do not export this alias.
@@ -124,24 +125,27 @@ def ui_browser_setup():
     executor = browser.config._executor
     if executor.is_driver_set:
         driver = executor.driver_instance
+        if driver is None:
+            return
+
         allure.attach(
             driver.get_screenshot_as_png(),
-            name='screenshot',
+            name="screenshot",
             attachment_type=allure.attachment_type.PNG,
         )
         allure.attach(
             driver.page_source,
-            name='page_source',
+            name="page_source",
             attachment_type=allure.attachment_type.HTML,
         )
 
         try:
-            get_log = getattr(driver, 'get_log', None)
+            get_log = getattr(driver, "get_log", None)
             if callable(get_log):
-                logs = get_log('browser')
+                logs = get_log("browser")
                 allure.attach(
                     json.dumps(logs, indent=2, ensure_ascii=False),
-                    name='browser_logs',
+                    name="browser_logs",
                     attachment_type=allure.attachment_type.JSON,
                 )
         except Exception:

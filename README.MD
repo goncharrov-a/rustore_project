@@ -38,8 +38,9 @@
 ## Содержание
 
 - [О проекте](#о-проекте)
+- [Технологии и роль](#технологии-и-роль)
 - [Что покрыто](#что-покрыто)
-- [Архитектура](#архитектура)
+- [Схема работы CI и отчетности](#схема-работы-ci-и-отчетности)
 - [Быстрый запуск](#быстрый-запуск)
 - [Команды запуска](#команды-запуска)
 - [Отчеты и интеграции](#отчеты-и-интеграции)
@@ -58,6 +59,25 @@
 3. **Mobile** — Android-тесты Wikipedia APK через Appium
 
 Цель проекта: показать полный QA-контур (Web + API + Mobile) с CI, Allure/TestOps, Jira и Telegram-уведомлениями.
+
+---
+
+## Технологии и роль
+
+| Инструмент | Что делает в проекте |
+|---|---|
+| Python | Язык автотестов |
+| Pytest | Запуск тестов, фикстуры, маркировка (`ui/api/mobile`) |
+| Selene + Selenium | UI-автоматизация веб-интерфейса RuStore |
+| Requests | Отправка HTTP-запросов в API-тестах |
+| Pydantic | Модели request/response и валидация структуры |
+| JSON Schema | Проверка схем ответа и запросов API |
+| Appium + UiAutomator2 | Mobile-автотесты Android-приложения |
+| Allure Report | Локальный HTML-отчет по прогонам |
+| Allure TestOps | Централизованное хранение прогонов и аналитика |
+| Jenkins | CI-запуск тестов по параметрам |
+| Jira | Трассировка автотестов к задачам |
+| Telegram | Доставка итогового отчета по завершению прогона |
 
 ---
 
@@ -81,7 +101,7 @@
 
 ---
 
-## Архитектура
+## Схема работы CI и отчетности
 
 ```mermaid
 flowchart LR
@@ -161,6 +181,7 @@ allure serve allure-results
 
 - **Allure TestOps:** [goncharov_final_project](https://allure.autotests.cloud/project/5147/dashboards)
 - **Jenkins:** [goncharov_final](https://jenkins.autotests.cloud/job/goncharov_final/)
+- **Allure Report (последний Jenkins запуск):** [open](https://jenkins.autotests.cloud/job/goncharov_final/lastBuild/allure/)
 - **Jira:** [HOMEWORK-1588](https://jira.autotests.cloud/browse/HOMEWORK-1588)
 
 ### Allure: главная

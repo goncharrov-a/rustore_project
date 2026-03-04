@@ -33,8 +33,8 @@ class TestProductsApi:
     @jira_issues("DIP-API-101")
     @pytest.mark.api
     @pytest.mark.smoke
-    def test_get_products_returns_200_and_valid_schema(self, api_session, api_timeout):
-        endpoint = ProductsEndpoint(api_session, api_timeout)
+    def test_get_products_returns_200_and_valid_schema(self, api_session, api_settings):
+        endpoint = ProductsEndpoint(api_session, api_settings)
 
         with allure.step("Отправить GET /products"):
             response = endpoint.get_products()
@@ -54,8 +54,8 @@ class TestProductsApi:
     @jira_issues("DIP-API-102")
     @pytest.mark.api
     @pytest.mark.smoke
-    def test_get_single_product_returns_expected_fields(self, api_session, api_timeout):
-        endpoint = ProductsEndpoint(api_session, api_timeout)
+    def test_get_single_product_returns_expected_fields(self, api_session, api_settings):
+        endpoint = ProductsEndpoint(api_session, api_settings)
 
         with allure.step("Отправить GET /products/1"):
             response = endpoint.get_product(1)
@@ -75,8 +75,8 @@ class TestProductsApi:
     @jira_issues("DIP-API-103")
     @pytest.mark.api
     @pytest.mark.regression
-    def test_create_product_returns_201_and_expected_data(self, api_session, api_timeout):
-        endpoint = ProductsEndpoint(api_session, api_timeout)
+    def test_create_product_returns_201_and_expected_data(self, api_session, api_settings):
+        endpoint = ProductsEndpoint(api_session, api_settings)
         payload = CreateProductRequest(
             title="QA diploma product",
             price=10.5,
@@ -107,8 +107,8 @@ class TestProductsApi:
     @jira_issues("DIP-API-104")
     @pytest.mark.api
     @pytest.mark.regression
-    def test_delete_product_returns_200(self, api_session, api_timeout):
-        endpoint = ProductsEndpoint(api_session, api_timeout)
+    def test_delete_product_returns_200(self, api_session, api_settings):
+        endpoint = ProductsEndpoint(api_session, api_settings)
 
         with allure.step("Отправить DELETE /products/1"):
             response = endpoint.delete_product(1)

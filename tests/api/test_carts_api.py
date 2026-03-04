@@ -33,8 +33,8 @@ class TestCartsApi:
     @jira_issues("DIP-API-107")
     @pytest.mark.api
     @pytest.mark.smoke
-    def test_get_carts_returns_200_and_schema(self, api_session, api_timeout):
-        endpoint = CartsEndpoint(api_session, api_timeout)
+    def test_get_carts_returns_200_and_schema(self, api_session, api_settings):
+        endpoint = CartsEndpoint(api_session, api_settings)
 
         with allure.step("Отправить GET /carts"):
             response = endpoint.get_carts()
@@ -54,8 +54,8 @@ class TestCartsApi:
     @jira_issues("DIP-API-108")
     @pytest.mark.api
     @pytest.mark.regression
-    def test_create_cart_returns_201_and_expected_data(self, api_session, api_timeout):
-        endpoint = CartsEndpoint(api_session, api_timeout)
+    def test_create_cart_returns_201_and_expected_data(self, api_session, api_settings):
+        endpoint = CartsEndpoint(api_session, api_settings)
         payload = CreateCartRequest(
             userId=1,
             date="2020-02-03",
