@@ -64,40 +64,40 @@
 
 ## Технологии и роль
 
-| Инструмент | Что делает в проекте |
-|---|---|
-| Python | Язык автотестов |
-| Pytest | Запуск тестов, фикстуры, маркировка (`ui/api/mobile`) |
-| Selene + Selenium | UI-автоматизация веб-интерфейса RuStore |
-| Requests | Отправка HTTP-запросов в API-тестах |
-| Pydantic | Модели request/response и валидация структуры |
-| JSON Schema | Проверка схем ответа и запросов API |
-| Appium + UiAutomator2 | Mobile-автотесты Android-приложения |
-| Allure Report | Локальный HTML-отчет по прогонам |
-| Allure TestOps | Централизованное хранение прогонов и аналитика |
-| Jenkins | CI-запуск тестов по параметрам |
-| Jira | Трассировка автотестов к задачам |
-| Telegram | Доставка итогового отчета по завершению прогона |
+| Инструмент            | Что делает в проекте                                  |
+|-----------------------|-------------------------------------------------------|
+| Python                | Язык автотестов                                       |
+| Pytest                | Запуск тестов, фикстуры, маркировка (`ui/api/mobile`) |
+| Selene + Selenium     | UI-автоматизация веб-интерфейса RuStore               |
+| Requests              | Отправка HTTP-запросов в API-тестах                   |
+| Pydantic              | Модели request/response и валидация структуры         |
+| JSON Schema           | Проверка схем ответа и запросов API                   |
+| Appium + UiAutomator2 | Mobile-автотесты Android-приложения                   |
+| Allure Report         | Локальный HTML-отчет по прогонам                      |
+| Allure TestOps        | Централизованное хранение прогонов и аналитика        |
+| Jenkins               | CI-запуск тестов по параметрам                        |
+| Jira                  | Трассировка автотестов к задачам                      |
+| Telegram              | Доставка итогового отчета по завершению прогона       |
 
 ---
 
 ## Что покрыто
 
-| Блок | Кол-во | Фокус проверок |
-|---|---:|---|
-| UI (`tests/ui`) | 10 | Главная, хедер, поиск, инструкция, футер, карточка приложения |
-| API (`tests/api`) | 8 | GET/POST/DELETE, статус-коды, значения ответа, JSON Schema |
-| Mobile (`tests/mobile`) | 7 | Главный экран, поиск, валидация результатов, негативные кейсы |
+| Блок                    | Кол-во | Фокус проверок                                                |
+|-------------------------|-------:|---------------------------------------------------------------|
+| UI (`tests/ui`)         |     10 | Главная, хедер, поиск, инструкция, футер, карточка приложения |
+| API (`tests/api`)       |      8 | GET/POST/DELETE, статус-коды, значения ответа, JSON Schema    |
+| Mobile (`tests/mobile`) |      7 | Главный экран, поиск, валидация результатов, негативные кейсы |
 
 ### Тестовая матрица
 
-| Scope | Маркеры | Команда |
-|---|---|---|
-| Только UI | `-m ui` | `pytest tests/ui -m ui --alluredir=allure-results` |
-| Только API | `-m api` | `pytest tests/api -m api --alluredir=allure-results` |
-| Только Mobile | `-m mobile` | `pytest tests/mobile -m mobile --alluredir=allure-results` |
-| UI + API | `-m "ui or api"` | `pytest tests -m "ui or api" --alluredir=allure-results` |
-| Все | без фильтра | `pytest tests --alluredir=allure-results` |
+| Scope         | Маркеры          | Команда                                                    |
+|---------------|------------------|------------------------------------------------------------|
+| Только UI     | `-m ui`          | `pytest tests/ui -m ui --alluredir=allure-results`         |
+| Только API    | `-m api`         | `pytest tests/api -m api --alluredir=allure-results`       |
+| Только Mobile | `-m mobile`      | `pytest tests/mobile -m mobile --alluredir=allure-results` |
+| UI + API      | `-m "ui or api"` | `pytest tests -m "ui or api" --alluredir=allure-results`   |
+| Все           | без фильтра      | `pytest tests --alluredir=allure-results`                  |
 
 ---
 
@@ -181,7 +181,8 @@ allure serve allure-results
 
 - **Allure TestOps:** [goncharov_final_project](https://allure.autotests.cloud/project/5147/dashboards)
 - **Jenkins:** [goncharov_final](https://jenkins.autotests.cloud/job/goncharov_final/)
-- **Allure Report (последний Jenkins запуск):** [open](https://jenkins.autotests.cloud/job/goncharov_final/lastBuild/allure/)
+- **Allure Report (последний Jenkins запуск):
+  ** [open](https://jenkins.autotests.cloud/job/goncharov_final/lastBuild/allure/)
 - **Jira:** [HOMEWORK-1588](https://jira.autotests.cloud/browse/HOMEWORK-1588)
 
 ### Allure: главная
@@ -227,7 +228,6 @@ allure serve allure-results
 </p>
 
 ---
-
 
 ## Инженерные фишки проекта
 

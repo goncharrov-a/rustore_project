@@ -23,14 +23,17 @@ class RuStoreMainPage:
         browser.element('[data-testid="header_logo"]').should(be.clickable).click()
         return self
 
-    def header_link(self, title: str):
+    @staticmethod
+    def header_link(title: str):
         return browser.all('[data-testid="header_routeLink"]').by(have.exact_text(title)).first
 
-    def header_link_href(self, title: str) -> str:
-        return self.header_link(title).get(query.attribute("href"))
+    @staticmethod
+    def header_link_href(title: str) -> str:
+        return RuStoreMainPage.header_link(title).get(query.attribute("href"))
 
-    def header_link_target(self, title: str) -> str:
-        return self.header_link(title).get(query.attribute("target"))
+    @staticmethod
+    def header_link_target(title: str) -> str:
+        return RuStoreMainPage.header_link(title).get(query.attribute("target"))
 
     def should_have_download_button(self):
         browser.element('[data-testid="goToDownloadInstruction"]').should(be.visible)
@@ -70,7 +73,8 @@ class RuStoreMainPage:
         browser.all('[data-testid="app-card"]').first.should(be.visible)
         return self
 
-    def first_result_card(self):
+    @staticmethod
+    def first_result_card():
         return browser.all('[data-testid="app-card"]').first
 
     def should_have_first_result_named(self, text: str):

@@ -25,6 +25,7 @@ class BaseEndpoint:
         url = self._build_url(endpoint)
         attempts = self._attempts_total(method_upper)
         response: requests.Response | None = None
+        attempt = 0
 
         self._attach_request(method_upper, url, kwargs)
 
@@ -106,13 +107,13 @@ class BaseEndpoint:
     def _should_retry(self, method: str, status_code: int, attempt: int, attempts: int) -> bool:
         return method == "GET" and status_code in self.retry_statuses and attempt < attempts
 
+    @staticmethod
     def _log_retryable_status(
-        self,
-        method: str,
-        url: str,
-        status_code: int,
-        attempt: int,
-        attempts: int,
+            method: str,
+            url: str,
+            status_code: int,
+            attempt: int,
+            attempts: int,
     ) -> None:
         attempt_str = f"{attempt}/{attempts}"
         logger.warning(
@@ -123,13 +124,13 @@ class BaseEndpoint:
             url,
         )
 
+    @staticmethod
     def _log_request_exception(
-        self,
-        method: str,
-        url: str,
-        attempt: int,
-        attempts: int,
-        exc: requests.RequestException,
+            method: str,
+            url: str,
+            attempt: int,
+            attempts: int,
+            exc: requests.RequestException,
     ) -> None:
         attempt_str = f"{attempt}/{attempts}"
         logger.warning(
@@ -144,5 +145,5 @@ class BaseEndpoint:
     def _safe_response_body(response: requests.Response):
         try:
             return response.json()
-        except Exception:
+        except ValueError:
             return response.text

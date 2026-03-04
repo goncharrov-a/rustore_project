@@ -4,10 +4,6 @@ from urllib.parse import urlsplit, urlunsplit
 
 import allure
 import pytest
-
-# Compatibility shim:
-# selene==2.0.0rc9 imports AnyDevice from selenium.action_chains,
-# but recent selenium versions do not export this alias.
 import selenium.webdriver.common.action_chains as _action_chains
 from dotenv import load_dotenv
 
@@ -16,11 +12,13 @@ if not hasattr(_action_chains, "AnyDevice"):
 
 from selene import browser
 from selenium import webdriver
+from selenium.common.exceptions import WebDriverException
 
 
 def _build_remote_url() -> str:
     explicit = os.getenv("SELENOID_URL", "").strip()
-    if explicit.startswith("http://") or explicit.startswith("https://"):
+    scheme = urlsplit(explicit).scheme.lower()
+    if scheme in {"http", "https"}:
         return explicit
 
     login = os.getenv("SELENOID_LOGIN", "").strip()
@@ -96,8 +94,6 @@ def _attach_selenoid_video(session_id: str, remote_url: str) -> None:
 
 @pytest.fixture(scope="function", autouse=True)
 def ui_browser_setup():
-    # Jenkins freestyle often writes variables to ".env" in workspace.
-    # Load it explicitly so SELENOID_* and other vars are available for the test run.
     load_dotenv('.env', override=True)
 
     base_url = os.getenv("UI_BASE_URL", "https://www.rustore.ru")
@@ -148,7 +144,7 @@ def ui_browser_setup():
                     name="browser_logs",
                     attachment_type=allure.attachment_type.JSON,
                 )
-        except Exception:
+        except (WebDriverException, ValueError, TypeError):
             pass
 
         session_id = getattr(driver, 'session_id', None)

@@ -40,10 +40,12 @@ class MainPage:
         )
         return self
 
-    def header_link_href(self, link_text: str) -> str:
+    @staticmethod
+    def header_link_href(link_text: str) -> str:
         link = browser.all('[data-testid="header_routeLink"]').by(have.exact_text(link_text)).first
         return link.get(query.attribute("href"))
 
-    def header_link_target(self, link_text: str) -> str:
+    @staticmethod
+    def header_link_target(link_text: str) -> str:
         link = browser.all('[data-testid="header_routeLink"]').by(have.exact_text(link_text)).first
         return link.get(query.attribute("target"))

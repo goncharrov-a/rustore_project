@@ -12,7 +12,7 @@ class AppPage:
         return self
 
     def should_have_title(self, title_text: str):
-        browser.should(have.title_containing("Госуслуги"))
+        browser.should(have.title_containing(title_text))
         return self
 
     def should_have_name(self, app_name: str):
