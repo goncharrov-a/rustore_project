@@ -33,8 +33,8 @@ class TestUsersApi:
     @jira_issues("DIP-API-105")
     @pytest.mark.api
     @pytest.mark.smoke
-    def test_get_users_returns_200_and_schema(self, api_session, api_timeout):
-        endpoint = UsersEndpoint(api_session, api_timeout)
+    def test_get_users_returns_200_and_schema(self, api_session, api_settings):
+        endpoint = UsersEndpoint(api_session, api_settings)
 
         with allure.step("Отправить GET /users"):
             response = endpoint.get_users()
@@ -54,8 +54,8 @@ class TestUsersApi:
     @jira_issues("DIP-API-106")
     @pytest.mark.api
     @pytest.mark.regression
-    def test_create_user_returns_201_and_expected_data(self, api_session, api_timeout):
-        endpoint = UsersEndpoint(api_session, api_timeout)
+    def test_create_user_returns_201_and_expected_data(self, api_session, api_settings):
+        endpoint = UsersEndpoint(api_session, api_settings)
         payload = CreateUserRequest(
             email="qa_user@mail.com",
             username="qa_user",
